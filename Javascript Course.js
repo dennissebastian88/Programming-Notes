@@ -34,7 +34,7 @@ function checkObj(checkProp) {
 
 console.log(checkObj("gift"))
 
-Manipulating Complex Objects
+//Manipulating Complex Objects
 var myMusic = [
   {
     "artist" : "Billy Joel",
@@ -58,7 +58,7 @@ var myMusic = [
 
 ]
 
-Accessing Nested Objects
+//Accessing Nested Objects
 var myStorage = {
   "car": {
     "inside": {
@@ -75,7 +75,7 @@ var gloveBoxContents = myStorage.car.inside["glove box"];
 
 console.log(gloveBoxContents)
 
-Record Collection
+//Record Collection
 var collection = {
   "2548": {
     "album": "Slippery When Wet",
@@ -119,6 +119,206 @@ function updateRecords(id, prop, value){
 
 console.log(updateRecords(5439,"album",""));
 
+//Adding loop Array
+var arr = [9,10,11,12];
+total = 0;
+
+for (i = 0; i < arr.length; i++){
+  total += arr[i];
+}
+console.log(total)
 
 
+//Iterate Through an Array with for loop
+function multiplyall(arr){
+  product = 1;
 
+  for(i = 0; i < arr.length; i++){
+    for(j = 0; j < arr[i].length; j++){
+      product = product * arr[i][j];    
+    }
+  }
+  return product;
+}
+
+var product = multiplyall([[1,2],[3,4],[5,6,7]]);
+console.log(product);
+
+//Do While Loop
+var myArray = [];
+var i = 10;
+
+do {
+  myArray.push(i);
+  i++;
+}
+while (i<5 )
+
+console.log(i, myArray);
+
+
+//Look Up Profile
+function lookUpProfile(name,prop){
+  for (var i = 0; i < contacts.length; i++){
+    if(contacts.firstName === name){
+      return contacts[i][prop] || "No such property";
+    }
+    else {
+      return "Name not found";
+    }
+  }
+}
+
+var data = lookUpProfile("Akira","likes");
+console.log(data);
+
+//Random Decimal function
+function randFraction(){
+
+  return Math.random();
+}
+
+console.log(randFraction())
+
+// Generate random whole number from 0-19
+
+var rand019 = Math.floor(Math.random()*20);
+
+
+console.log(rand019);
+
+//Generate Random whole number within a range
+function ourRandomRange(ourMin, ourMax){
+
+  return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+
+ourRandomRange(1,9);
+
+function randomRange(myMin, myMax){
+
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+
+}
+
+var myRandom = randomRange(5, 15);
+
+console.log(myRandom);
+
+//Use the parseInt Function
+function convertToInteger(str){
+  return parseInt(str);
+}
+
+convertToInteger("56");
+
+//Use the parseInt Function with a Radix
+function convertToInteger(str){
+  return parseInt(str, 2)
+}
+
+convertToInteger("10011");
+
+//Profile LookUp
+function lookUpProfile(name, prop) {
+  for (var x = 0; x < contacts.length; x++) {
+    if (contacts[x].firstName === name) {
+      if (contacts[x].hasOwnProperty(prop)) {
+        return contacts[x][prop];
+      } else {
+        return "No such property";
+      }
+    }
+  }
+  return "No such contact";
+}
+
+//Ternary Operative
+function checkSign(num){
+  return num > 0 ? "positive" : num < 0 ? "negative" : "zero"
+}
+console.log(checkSign(0));
+
+//Mutate an Array Declared with const
+const s = [5,7,2];
+function editInPlace(){
+  "use strict";
+
+  s[0] = 2;
+  s[1] = 5;
+  s[2] = 7;
+}
+editInPlace();
+
+console.log(s)
+
+//Freeze Object
+function freezeObj(){
+  "use strict";
+  const MATH_CONSTANTS = {
+    PI: 3.14
+  };
+
+  Object.freeze(MATH_CONSTANTS);
+
+  try {
+    MATH_CONSTANTS.PI = 99;
+  } catch(ex){
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+
+//Use Arrow Functions to Write Concise Anonymous Functions
+
+var magic = function(){
+  return new Date();
+};
+
+var magic = () => new Date()
+
+//Write Arrow Functions with Parameters
+var myConcat = function(arr1,arr2){
+  return arr1.concat(arr2);
+};
+
+console.log(myConcat([1,2],[3,4,5]))
+
+var myConcat => (arr1,arr2) => arr1.concat(arr2)
+
+//Write Higher Order Arrow Functions
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+
+const squareList = (arr) => {
+  const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
+  return squaredIntegers;
+};
+
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers); 
+
+//Use the Rest Operator with Function Parameters
+const sum = (function(){
+  return function sum(x,y,z) {
+  const args = [x,y,z];
+  return args.reduce((a,b) => a+b, 0);
+};
+})();
+console.log(sum(1,2,3));
+
+const sum = (function(){
+  return function sum(...args) {  
+  return args.reduce((a,b) => a+b, 0);
+};
+})();
+console.log(sum(1,2,3));
+
+//Use the Spread Operator to Evaluate Arrays In Place
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function(){
+  arr2 = [...arr1];
+  arr1[0] = 'Potato'
+})();
+console.log(arr2);
